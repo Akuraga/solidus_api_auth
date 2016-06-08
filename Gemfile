@@ -1,9 +1,13 @@
 source 'http://rubygems.org'
 
-if RUBY_VERSION < '1.9'
-  gem 'ruby-debug'
-else
-  gem 'byebug'
+branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
+gem "solidus", github: "solidusio/solidus", branch: branch
+
+gem 'pg'
+gem 'mysql2'
+
+group :development, :test do
+  gem "pry-rails"
 end
 
 gemspec
